@@ -1,0 +1,26 @@
+{
+    "name": "dphn/sc-widgets",
+    "description": "The basic example widgets kit for module ScContent.",
+    "license": "New BSD License",
+    "keywords": [
+        "zf2",
+        "cms",
+        "content management"
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "zendframework/zendframework": ">2.2.0rc1",
+        "bjyoungblood/bjy-authorize": "1.4.*",
+        "zf-commons/zfc-user": "0.1.*",
+        "dphn/sc-content": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "ScWidgets": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
