@@ -7,6 +7,7 @@ Introduction
 -----------------
 * Example widget
 * Search widget and simple integrated search feature
+* Login widget
 
 
 Installation

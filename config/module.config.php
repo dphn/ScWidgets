@@ -17,12 +17,19 @@ return [
                 ],
                 'frontend' => 'ScWidgets.Controller.SearchWidget',
             ],
-            'login' => [
+            'example' => [
                 'options' => [
                     'display_name' => 'Example',
                     'description' => 'Example widget.',
                 ],
                 'frontend' => 'ScWidgets.Controller.Example',
+            ],
+            'login' => [
+                'options' => [
+                    'display_name' => 'Login',
+                    'description' => 'Login widget.',
+                ],
+                'frontend' => 'ScWidgets.Controller.Login',
             ],
         ],
     ],
