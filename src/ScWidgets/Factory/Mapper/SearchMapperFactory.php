@@ -7,10 +7,9 @@
  * @link      https://github.com/dphn/ScWidgets
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScWidgets\Factory\Options;
+namespace ScWidgets\Factory\Mapper;
 
-use ScWidgets\Options\InstallationOptions,
-    ScWidgets\Module,
+use ScWidgets\Mapper\SearchMapper,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -18,20 +17,20 @@ use ScWidgets\Options\InstallationOptions,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class InstallationOptionsFactory implements FactoryInterface
+class SearchMapperFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScWidgets\Options\InstallationOptions
+     * @return ScWidgets\Mapper\SearchMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $module = new Module();
-        $baseDir = $module->getDir();
-        $options = include(
-            $baseDir . DS . 'config' . DS . 'installation.config.php'
-        );
-        $installationOptions = new InstallationOptions($options);
-        return $installationOptions;
+        $adapter = $serviceLocator->get('ScDb.Adapter');
+        $filterManager = $serviceLocator->get('FilterManager');
+        $filter = $filterManager->get('ScFilter.SimpleStemmingFilter');
+
+        $mapper = new SearchMapper($adapter, $filter);
+
+        return $mapper;
     }
 }

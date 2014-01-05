@@ -59,7 +59,7 @@ class Module extends AbstractModule
         $installation = $serviceLocator->get('ScWidgets.Options.InstallationOptions')
             ->getInstallation();
 
-        $serviceLocator->get('ScService.Installation.Inspector')->setup($installation);
+        $serviceLocator->get('ScListener.Installation.Inspector')->setup($installation);
     }
 
     /**
@@ -76,5 +76,13 @@ class Module extends AbstractModule
     public function getControllerConfig()
     {
         return include __DIR__ . DS . 'config' . DS . 'controllers.config.php';
+    }
+
+    /**
+     * @return array
+     */
+    public function getFormElementConfig()
+    {
+        return include __DIR__ . DS . 'config' . DS . 'form.elements.config.php';
     }
 }

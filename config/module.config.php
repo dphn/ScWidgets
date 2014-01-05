@@ -10,39 +10,40 @@ return [
      */
     'sc' => [
         'widgets' => [
+            'search' => [
+                'options' => [
+                    'display_name' => 'Search',
+                    'description' => 'A search form.',
+                ],
+                'frontend' => 'ScWidgets.Controller.SearchWidget',
+            ],
             'login' => [
                 'options' => [
                     'display_name' => 'Example',
                     'description' => 'Example widget.',
                 ],
-                'frontend' => [
-                    'controller' => 'ScWidgets.Controller.Example',
-                    'action' => 'front',
-                ],
-            ],
-            'test_1' => [
-                'options' => [
-                    'display_name' => 'Test 1',
-                    'description' => 'The first widget for testing.',
-                ],
-            ],
-            'test_2' => [
-                'options' => [
-                    'display_name' => 'Test 2',
-                    'description' => 'The second widget for testing.',
-                ],
-            ],
-            'test_3' => [
-                'options' => [
-                    'display_name' => 'Test 3',
-                    'description' => 'The third widget for testing.',
-                ],
+                'frontend' => 'ScWidgets.Controller.Example',
             ],
         ],
     ],
     'view_manager' => [
         'template_path_stack' => [
             'ScWidgets' => __DIR__ . '/../view',
+        ],
+    ],
+    'router' => [
+        'routes' => [
+            'search' => [
+                'type' => 'literal',
+                'priority' => 1000,
+                'options' => [
+                    'route' => '/search',
+                    'defaults' => [
+                        'controller' => 'ScWidgets.Controller.FrontendSearch',
+                        'action' => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
 ];

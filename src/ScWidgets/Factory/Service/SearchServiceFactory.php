@@ -7,10 +7,9 @@
  * @link      https://github.com/dphn/ScWidgets
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScWidgets\Factory\Options;
+namespace ScWidgets\Factory\Service;
 
-use ScWidgets\Options\InstallationOptions,
-    ScWidgets\Module,
+use ScWidgets\Service\SearchService,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -18,20 +17,17 @@ use ScWidgets\Options\InstallationOptions,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class InstallationOptionsFactory implements FactoryInterface
+class SearchServiceFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScWidgets\Options\InstallationOptions
+     * @return ScWidgets\Service\SearchService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $module = new Module();
-        $baseDir = $module->getDir();
-        $options = include(
-            $baseDir . DS . 'config' . DS . 'installation.config.php'
-        );
-        $installationOptions = new InstallationOptions($options);
-        return $installationOptions;
+        $mapper = $serviceLocator->get('ScWidgets.Mapper.SearchMapper');
+        $service = new SearchService();
+        $service->setMapper($mapper);
+        return $service;
     }
 }

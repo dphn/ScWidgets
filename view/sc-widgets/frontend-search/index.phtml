@@ -1,0 +1,97 @@
+<?php $this->headTitle('Search') ?>
+
+    <h1><?= $this->translate('Search results') ?></h1>
+
+    <?php if(isset($list) && ! $list->isEmpty()): ?>
+
+    <div class="search-results">
+        <ul>
+            <?php foreach ($list as $item): ?>
+
+            <li>
+                <h3><a href="<?= $this->url('home', ['content-name' => $item->getName()]) ?>"><?= $item->getTitle() ?></a></h3>
+                <?= $item->getText() ?>
+
+            </li>
+            <?php endforeach ?>
+
+        </ul>
+    </div>
+    <?php else: ?>
+
+    <h3><?= $this->translate('Nothing was found.') ?></h3>
+    <?php endif ?>
+
+    <div class="search-form-control">
+        <?php $form->prepare() ?>
+
+        <?= $this->form()->openTag($form) ?>
+        <?php if($list->getTotalPages() > 1): ?>
+
+        <div class="form-group page-control">
+            <div class="btn-group">
+                <a href="<?= $this->url('search', [], ['query' => ['needle' => $options->getNeedle(), 'filter' => $options->getFilter(), 'order' => $options->getOrder(), 'page' => 1]]) ?>" class="btn btn-default btn-sm" title="<?= $this->translate('Go to the first page') ?>">«</a>
+                <a href="<?= $this->url('search', [], ['query' => ['needle' => $options->getNeedle(), 'filter' => $options->getFilter(), 'order' => $options->getOrder(), 'page' => max($options->getPage() - 1, 1)]]) ?>" class="btn btn-default btn-sm" title="<?= $this->translate('Go to the previous page') ?>">‹</a>
+            </div>
+            <div class="page-control-form">
+                <div class="page-control-group">
+                    <span class="page-control-input">
+                        <input type="text" name="page" value="<?= $options->getPage() ?>" class="form-control input-sm" title="<?= $this->translate('Current page') ?>" />
+                    </span>
+                    <span class="page-control-count">
+                        <span><?= $this->translate('of') ?> <?= $list->getTotalPages() ?></span>
+                    </span>
+                    <span class="page-control-button">
+                        <button class="btn btn-default btn-sm" type="submit"><?= $this->translate('Go') ?></button>
+                    </span>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a href="<?= $this->url('search', [], ['query' => ['needle' => $options->getNeedle(), 'filter' => $options->getFilter(), 'order' => $options->getOrder(), 'page' => min($options->getPage() + 1, $list->getTotalPages())]]) ?>" class="btn btn-default btn-sm" title="<?= $this->translate('Go to the next page') ?>">›</a>
+                <a href="<?= $this->url('search', [], ['query' => ['needle' => $options->getNeedle(), 'filter' => $options->getFilter(), 'order' => $options->getOrder(), 'page' => $list->getTotalPages()]]) ?>" class="btn btn-default btn-sm" title="<?= $this->translate('Go to the last page') ?>">»</a>
+            </div>
+        </div>
+        <?php endif ?>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('needle'))?>
+
+            <?= $this->formInput($form->get('needle'))?>
+
+            <?php if($this->formElementErrors($form->get('needle'))): ?>
+
+            <div class="alert alert-warning"><?= $this->formElementErrors($form->get('needle')) ?></div>
+
+            <?php endif ?>
+
+        </div>
+        <div class="form-group radio-inline-group">
+            <?= $this->formlabel($form->get('filter')) ?>
+
+            <br />
+            <?= $this->formRadio($form->get('filter')) ?>
+            <?php if($this->formElementErrors($form->get('filter'))): ?>
+
+            <div class="alert alert-warning"><?= $this->formElementErrors($form->get('filter')) ?></div>
+
+            <?php endif ?>
+
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('order')) ?>
+
+            <br />
+            <?= $this->formSelect($form->get('order')) ?>
+            <?php if($this->formElementErrors($form->get('order'))): ?>
+
+            <div class="alert alert-warning"><?= $this->formElementErrors($form->get('order')) ?></div>
+            <?php endif ?>
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit"><?= $this->translate('Search') ?></button>
+        </div>
+
+        <?= $this->form()->closeTag($form) ?>
+
+    </div>

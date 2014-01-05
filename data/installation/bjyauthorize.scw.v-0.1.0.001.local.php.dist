@@ -1,0 +1,12 @@
+<?php
+
+return ['bjyauthorize' => [
+    'guards' => [
+	'BjyAuthorize\Guard\Route' => [
+            [
+                'route' => 'search',
+                'roles' => ['guest', 'admin'],
+            ],
+        ],
+    ],
+]];

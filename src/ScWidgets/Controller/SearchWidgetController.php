@@ -17,7 +17,7 @@ use ScContent\Controller\AbstractWidget,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ExampleController extends AbstractWidget
+class SearchWidgetController extends AbstractWidget
 {
     /**
      * @return Zend\View\Model\ViewModel
