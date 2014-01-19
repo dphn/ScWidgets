@@ -3,7 +3,7 @@
  * ScWidgets (https://github.com/dphn/ScWidgets)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScWidgets
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -17,7 +17,7 @@ use ScContent\Controller\AbstractWidget,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ExampleController extends AbstractWidget
+class ExampleWidgetController extends AbstractWidget
 {
     /**
      * @return Zend\View\Model\ViewModel

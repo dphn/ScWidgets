@@ -3,9 +3,11 @@ ScWidgets
 
 This module in process.
 
-Introduction
+Features / Goals
 -----------------
 * Example widget
+* Site title
+* Simple banner as image
 * Search widget and simple integrated search feature
 * Login widget
 

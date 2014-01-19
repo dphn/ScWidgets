@@ -1,0 +1,17 @@
+<?php $form->prepare() ?>
+
+        <h3><?= $this->translate('Banner') ?></h3>
+        <?= $this->form()->openTag($form) ?>
+
+            <div class="form-group">
+                <?= $this->formRow($form->get('image')) ?>
+
+                <p class="help-block"><?= $this->translate('You can use placeholders: {theme_images} and {uploads}') ?></p>
+
+            </div>
+            <div class="form-group">
+                <?= $this->formbutton($form->get('save')) ?>
+
+            </div>
+
+        <?= $this->form()->closeTag($form) ?>

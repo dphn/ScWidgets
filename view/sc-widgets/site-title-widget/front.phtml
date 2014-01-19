@@ -1,0 +1,14 @@
+
+        <div class="widget site-header-widget">
+            <h1>
+            <?php if(isset($logo)): ?>
+
+                <a href="<?= $this->url('home', [], ['force_canonical' => true]) ?>"><img src="<?= $this->basePath($logo) ?>" alt="" /></a>
+            <?php endif ?>
+            <?php if (isset($title)): ?>
+
+                <?= $title ?>
+            <?php endif ?>
+
+            </h1>
+        </div>

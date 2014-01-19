@@ -10,24 +10,44 @@ return [
      */
     'sc' => [
         'widgets' => [
-            'search' => [
+            'site_title' => [
+                'display_name' => 'Site title',
+                'description' => 'Logo and site title.',
                 'options' => [
-                    'display_name' => 'Search',
-                    'description' => 'A search form.',
+                    'unique' => true,
+                    'logo'  => '/{theme_images}/brand.png',
+                    'title'  => 'ScContent - ZF2 based CMS',
                 ],
-                'frontend' => 'ScWidgets.Controller.SearchWidget',
+                'frontend' => 'ScWidgets.Controller.SiteTitle',
+                'backend'  => 'ScWidgets.Controller.SiteTitle',
+            ],
+            'search' => [
+                'display_name' => 'Search',
+                'description' => 'A search form.',
+                'options' => [
+                ],
+                'frontend' => 'ScWidgets.Controller.Search',
+            ],
+            'banner' => [
+                'display_name' => 'Banner',
+                'description' => 'Banner with a static image.',
+                'options' => [
+                    'image' => '/{theme_images}/banners/banner0.png',
+                ],
+                'frontend' => 'ScWidgets.Controller.Banner',
+                'backend'  => 'ScWidgets.Controller.Banner',
             ],
             'example' => [
+                'display_name' => 'Example',
+                'description' => 'Example widget.',
                 'options' => [
-                    'display_name' => 'Example',
-                    'description' => 'Example widget.',
                 ],
                 'frontend' => 'ScWidgets.Controller.Example',
             ],
             'login' => [
+                'display_name' => 'Login',
+                'description' => 'Login widget.',
                 'options' => [
-                    'display_name' => 'Login',
-                    'description' => 'Login widget.',
                 ],
                 'frontend' => 'ScWidgets.Controller.Login',
             ],
