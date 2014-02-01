@@ -1,7 +1,7 @@
 
-        <div class="widget site-header-widget">
+        <div class="widget site-title-widget">
             <h1>
-            <?php if(isset($logo)): ?>
+            <?php if(isset($logo) && ! empty($logo)): ?>
 
                 <a href="<?= $this->url('home', [], ['force_canonical' => true]) ?>"><img src="<?= $this->basePath($logo) ?>" alt="" /></a>
             <?php endif ?>
