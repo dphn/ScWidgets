@@ -25,6 +25,7 @@ return [
                 'display_name' => 'Search',
                 'description' => 'A search form.',
                 'options' => [
+                    'unique' => true,
                 ],
                 'frontend' => 'ScWidgets.Controller.Search',
             ],
@@ -48,6 +49,7 @@ return [
                 'display_name' => 'Login',
                 'description' => 'Login widget.',
                 'options' => [
+                    'unique' => true,
                 ],
                 'frontend' => 'ScWidgets.Controller.Login',
             ],
