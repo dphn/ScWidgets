@@ -56,10 +56,11 @@ class Module extends AbstractModule
         $serviceLocator = $app->getServiceManager();
 
         // Example of using ScContent installation feature
-        $installation = $serviceLocator->get('ScWidgets.Options.InstallationOptions')
-            ->getInstallation();
+        $installation = require $this->getDir()
+                      . str_replace('/', DS, '/config/installation.config.php');
 
-        $serviceLocator->get('ScListener.Installation.Inspector')->setup($installation);
+        $serviceLocator->get('ScListener.Installation.Inspector')
+            ->setup(__NAMESPACE__, $installation);
     }
 
     /**
